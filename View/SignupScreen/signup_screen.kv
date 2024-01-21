@@ -1,0 +1,48 @@
+<SignupScreenView>
+    name: 'signup screen'
+    MDBoxLayout:
+        adaptive_height: True
+        orientation: "vertical"
+        pos_hint: {"center_y": .5}
+        padding: "20dp"
+        spacing: "20dp"
+        MDTextField:
+            id: email
+            mode: "outlined"
+            input_type: "mail"
+            radius: "10dp"
+            MDTextFieldLeadingIcon:
+                icon: "account"
+            MDTextFieldHintText:
+                text: "Email"
+        MDTextField:
+            id: password
+            mode: "outlined"
+            input_type: "null"
+            radius: "10dp"
+            MDTextFieldLeadingIcon:
+                icon: "lock"
+            MDTextFieldHintText:
+                text: "Password"
+        MDTextField:
+            id: c_password
+            mode: "outlined"
+            input_type: "null"
+            radius: "10dp"
+            MDTextFieldLeadingIcon:
+                icon: "lock"
+            MDTextFieldHintText:
+                text: "Confirm Password"
+        MDButton:
+            pos_hint: {"center_x": .5}
+            on_release:
+                if password.text == c_password.text:\
+                root.controller.account_signup(email.text, password.text)
+            MDButtonText:
+                text: "Create Account"
+        MDButton:
+            style: "text"
+            pos_hint: {"center_x": .5}
+            on_release: root.switch_screen("login screen")
+            MDButtonText:
+                text: "Sign in instead"
